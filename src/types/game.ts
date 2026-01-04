@@ -13,6 +13,7 @@ export interface GameState {
 export interface Bike {
   id: string;
   name: string;
+  emoji: string;
   color: string;
   speed: number;
   defense: number;
@@ -21,6 +22,8 @@ export interface Bike {
   isPremium: boolean;
   isUnlocked: boolean;
   ability: string;
+  stickers?: string[];
+  requirement?: string;
 }
 
 export interface Obstacle {
@@ -29,7 +32,7 @@ export interface Obstacle {
   y: number;
   width: number;
   height: number;
-  type: 'spike' | 'barrier' | 'hole' | 'ramp';
+  type: 'spike' | 'barrier' | 'hole' | 'ramp' | 'cone';
 }
 
 export interface Achievement {
@@ -49,7 +52,7 @@ export interface Achievement {
 export interface Level {
   id: number;
   name: string;
-  difficulty: 'easy' | 'medium' | 'hard' | 'impossible';
+  difficulty: 'easy' | 'medium' | 'hard' | 'impossible' | 'unreal';
   stars: number;
   maxStars: 3;
   isUnlocked: boolean;
@@ -63,15 +66,19 @@ export interface PlayerStats {
   email: string;
   avatar: string;
   totalDistance: number;
+  nightDistance?: number;
+  snowDistance?: number;
   totalCoins: number;
   premiumCurrency: number;
   level: number;
   xp: number;
   gamesPlayed: number;
+  totalJumps: number;
   highScore: number;
   currentBike: string;
   unlockedBikes: string[];
   achievements: string[];
+  unlockedStickers: string[];
   upgrades: {
     speed: number;
     defense: number;
@@ -83,12 +90,16 @@ export interface GameEvent {
   id: string;
   name: string;
   description: string;
-  type: 'night' | 'snow';
+  type: 'night' | 'snow' | 'normal';
   isActive: boolean;
   startDate: string;
   endDate: string;
   rewards: {
     coins: number;
     premiumCurrency: number;
+  };
+  requirement?: {
+    type: string;
+    value: number;
   };
 }

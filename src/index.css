@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,39 +6,39 @@
 
 @layer base {
   :root {
-    --background: 220 40% 5%;
-    --foreground: 280 100% 95%;
+    --background: 220 25% 8%;
+    --foreground: 0 0% 98%;
 
-    --card: 220 35% 8%;
-    --card-foreground: 280 100% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 35% 8%;
-    --popover-foreground: 280 100% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 280 80% 70%;
-    --primary-foreground: 220 40% 5%;
+    --primary: 18 100% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 170 80% 50%;
-    --secondary-foreground: 220 40% 5%;
+    --secondary: 190 100% 50%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 30% 15%;
-    --muted-foreground: 280 40% 70%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 280 90% 60%;
-    --accent-foreground: 220 40% 5%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 220 25% 8%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 280 50% 30%;
-    --input: 220 30% 15%;
-    --ring: 280 80% 70%;
+    --border: 220 15% 25%;
+    --input: 220 20% 15%;
+    --ring: 18 100% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --neon-purple: 280 80% 70%;
-    --neon-green: 170 80% 50%;
-    --neon-cyan: 190 80% 60%;
+    --game-orange: 18 100% 60%;
+    --game-cyan: 190 100% 50%;
+    --game-yellow: 45 100% 50%;
   }
 }
 
@@ -49,8 +49,25 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Rajdhani", sans-serif;
+    font-family: "Rubik", sans-serif;
     overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: "🏍️ ⚡ 🔥 ⭐ 💨 🏁 🏍️ ⚡ 🔥 ⭐ 💨 🏁 🏍️ ⚡ 🔥 ⭐ 💨 🏁";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 48px;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+    line-height: 100px;
+    word-wrap: break-word;
+    overflow: hidden;
   }
 
   h1,
@@ -59,7 +76,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Orbitron", sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 }
 
@@ -128,11 +145,21 @@
   .gradient-text {
     background: linear-gradient(
       135deg,
-      hsl(var(--neon-purple)) 0%,
-      hsl(var(--neon-green)) 100%
+      hsl(var(--game-orange)) 0%,
+      hsl(var(--game-yellow)) 50%,
+      hsl(var(--game-cyan)) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .emoji-bg {
+    position: absolute;
+    font-size: 64px;
+    opacity: 0.1;
+    pointer-events: none;
+    user-select: none;
+    animation: float 6s ease-in-out infinite;
   }
 }
